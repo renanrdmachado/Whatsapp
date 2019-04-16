@@ -1,0 +1,14 @@
+
+.whats_fixed, .whats_fixed:after, .whats_fixed:focus { position: fixed; bottom: 10px; right: 10px; height: 60px; width: 60px; border-radius: 50%; background-color: #23b180; font-size: 24px; color: #fff; display: flex; justify-content: center;align-items: center;z-index: 99;}
+.whats_fixed:hover { color: #fff; background-color: #128c7e; }
+.whats_fixed>div{ display: flex;justify-content: center;align-items: center; height:60px;}
+
+.icon.i-whatsapp {background-image:url('../img/i-whatsapp.svg');background-size: 100%;background-repeat:no-repeat;width:25px;height:26px;display: block}
+
+.show-for-medium-up {display:block;}
+.show-for-small-only {display:none;}
+
+@media all and (max-width: 640px) {
+	.show-for-medium-up {display:none;}
+	.show-for-small-only {display:block;}
+}
