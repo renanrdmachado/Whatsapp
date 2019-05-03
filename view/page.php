@@ -36,7 +36,15 @@ if (!current_user_can('manage_options'))  {
 			<!-- REDES SOCIAIS -->
 			<?php
 
-			add_option('mvl_whatsapp_num','ff');
+			add_option('mvl_whatsapp_ddi','');
+			if(isset($_POST['mvl_whatsapp_ddi'])){
+				update_option('mvl_whatsapp_ddi',$_POST['mvl_whatsapp_ddi']);
+			}
+			add_option('mvl_whatsapp_ddd','');
+			if(isset($_POST['mvl_whatsapp_ddd'])){
+				update_option('mvl_whatsapp_ddd',$_POST['mvl_whatsapp_ddd']);
+			}
+			add_option('mvl_whatsapp_num','');
 			if(isset($_POST['mvl_whatsapp_num'])){
 				update_option('mvl_whatsapp_num',$_POST['mvl_whatsapp_num']);
 			}
@@ -50,7 +58,9 @@ if (!current_user_can('manage_options'))  {
 			<tr>
 				<th scope='row'><label for='mvl_whatsapp_num'>Número</cite></label></th>
 				<td>
-					<input class="regular-text" type="text" name='mvl_whatsapp_num' id='mvl_whatsapp_num' placeholder='+5541999999999' value='<?php echo get_option('mvl_whatsapp_num') ?>'>
+					<input class="regular-text" type="text" name='mvl_whatsapp_ddi' id='mvl_whatsapp_num' placeholder='55' value='<?php echo get_option('mvl_whatsapp_ddi') ?>' maxlength= "2" style="width: 30px;text-align: center;">
+					<input class="regular-text" type="text" name='mvl_whatsapp_ddd' id='mvl_whatsapp_num' placeholder='41' value='<?php echo get_option('mvl_whatsapp_ddd') ?>' maxlength= "2" style="width: 30px;text-align: center;">
+					<input class="regular-text" type="text" name='mvl_whatsapp_num' id='mvl_whatsapp_num' placeholder='9 9999-9999' value='<?php echo get_option('mvl_whatsapp_num') ?>' style="width: 278px;">
 				</td>
 			</tr>
 			<tr>

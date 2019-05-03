@@ -12,14 +12,15 @@
  * Domain Path: /languages
  */
 
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 // Configurações iniciais
 define( 'WHATSAPPMVL_VERSION', '1' );
 define( 'WHATSAPPMVL__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 // Callback da ativação
 function whatsappmvl_setup_page() {
-    add_action('admin_menu', 'whatsapp_mvl');
-
+	
 	function whatsapp_mvl() {
 	    add_menu_page(
 	    	'Whatsapp',
@@ -29,12 +30,35 @@ function whatsappmvl_setup_page() {
 	    	null,
 	    	plugin_dir_url(__FILE__) . 'assets/img/i-whatsapp.svg');
 	}
+    add_action('admin_menu', 'whatsapp_mvl');
 
 	//Inserção da div no frontend
 	function insertWhatsappDiv(){
 		require(plugin_dir_path(__FILE__) . 'view/block.php');
 	}
 	add_action('wp_footer','insertWhatsappDiv');
+
+	// WP Scripts
+	function whatsappmvl_scripts() {
+	    wp_enqueue_style(
+	    	'whatsappmvlCSS',
+	    	plugins_url() . '/mvl-whatsapp/assets/css/whatsappmvl.css',
+	    	$deps=array(),
+	    	'1'
+	    );
+	}
+	add_action( 'wp_enqueue_scripts', 'whatsappmvl_scripts' );
+
+	// Admin Scripts
+	function admin_whatsappmvl_scripts() {
+	    wp_enqueue_style(
+	    	'adminwhatsappmvlCSS',
+	    	plugins_url() . '/mvl-whatsapp/assets/css/whatsappmvl.admin.css',
+	    	$deps=array(),
+	    	'1'
+	    );
+	}
+	add_action( 'admin_enqueue_scripts', 'admin_whatsappmvl_scripts' );
 }
 add_action( 'init', 'whatsappmvl_setup_page' );
  
@@ -54,15 +78,3 @@ function whatsappmvl_deactivation() {
     flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'whatsappmvl_deactivation' );
-
-// WP Scripts
-function whatsappmvl_scripts() {
-    wp_enqueue_style( 'whatsappmvlCSS', plugins_url() . '/mvl-whatsapp/assets/css/whatsappmvl.css');
-}
-add_action( 'wp_enqueue_scripts', 'whatsappmvl_scripts' );
-
-// Admin Scripts
-function admin_whatsappmvl_scripts() {
-    wp_enqueue_style( 'adminwhatsappmvlCSS', plugins_url() . '/mvl-whatsapp/assets/css/whatsappmvl.admin.css');
-}
-add_action( 'admin_enqueue_scripts', 'admin_whatsappmvl_scripts' );
