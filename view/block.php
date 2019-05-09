@@ -32,13 +32,13 @@ if(null==$whatsapp->numero){
 ?>
 
 <div id="whatsapp_mvl">
-	<a href="https://web.whatsapp.com/send?l=pt&amp;phone=<?php echo $whatsapp->numero ?>text=<?php echo $whatsapp->texto ?>" class="whats_fixed show-for-medium-up" target="_blank">
+	<a href="https://web.whatsapp.com/send?l=pt&amp;phone=<?php echo $whatsapp->numero ?>&text=<?php echo $whatsapp->texto ?>" class="whats_fixed show-for-medium-up" target="_blank">
 			<div>
 				<span class="icon i-whatsapp"></span>
 			</div>
 	</a>
 
-	<a href="https://api.whatsapp.com/send?l=pt&amp;phone=<?php echo $whatsapp->numero ?>text=<?php echo $whatsapp->texto ?>" class="whats_fixed show-for-small-only" target="_blank">
+	<a href="https://api.whatsapp.com/send?l=pt&amp;phone=<?php echo $whatsapp->numero ?>&text=<?php echo $whatsapp->texto ?>" class="whats_fixed show-for-small-only" target="_blank">
 		<div>
 			<span class="icon i-whatsapp"></span>
 		</div>
